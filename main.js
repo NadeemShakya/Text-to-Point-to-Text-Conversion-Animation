@@ -28,10 +28,8 @@ let variables = {
   maxOpacity: 0.9,
   minBubbleDistance : 2,
   velocityController : 20
-  
 };
 
-let calculateDistance = (x1, y1, x2, y2) => Math.sqrt( Math.pow((x1-x2), 2) + Math.pow((y1-y2), 2) );
 
 
 let initializeText = () => {
@@ -39,12 +37,12 @@ let initializeText = () => {
     let userTextSplit = variables.text.split(" ");
     ctx.font = `lighter ${canvas.width / 5}px Verdana`;
     for(let i = 0; i < userTextSplit.length; i++) {
-      ctx.fillStyle = "#fff";
+      ctx.fillStyle = "#f2f2f2";
       ctx.textAlign = "center";
       ctx.fillText(userTextSplit[i], canvas.width / 2, canvas.height / 4 + i * canvas.width / 4);
     }
   }else {
-    ctx.font = `lighter ${canvas.width / 9}px Verdana`;  ctx.fillStyle = "#fff";
+    ctx.font = `lighter ${canvas.width / 9}px Verdana`;  ctx.fillStyle = "#f2f2f2";
     ctx.textAlign = "center";
     ctx.fillText(variables.text, canvas.width / 2, canvas.height / 2);
   }
@@ -75,12 +73,7 @@ input.addEventListener("keyup", () => {
 
 window.addEventListener('load', function() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  let userName = window.prompt("What is your first name?");
-  console.log(userName);
-  if(!userName) {
-    userName = "Stranger.";
-  }
-  variables.text = `Hi, ${userName}`;
+  variables.text = `Hi, There!`;
   initializeText();
   getTextInformation();
 })
