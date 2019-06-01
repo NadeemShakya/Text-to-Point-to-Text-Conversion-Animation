@@ -14,8 +14,8 @@ class Bubbles {
     }
   
     velocity = {
-      x: Math.random() < 0.5 ? -.5 : .5,
-      y: Math.random() < 0.5 ? -.5 : .5,
+      x: (Math.random() < 0.5 ? -.5 : .5),
+      y: (Math.random() < 0.5 ? -.5 : .5),
   
     }
 
