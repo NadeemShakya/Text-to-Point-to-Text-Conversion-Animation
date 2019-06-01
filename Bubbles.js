@@ -30,6 +30,7 @@ class Bubbles {
         this.velocity.y = Math.random() < 0.5 ? -0.1 : 0.1;
       }
     }
+
     float() {
       this.x += this.velocity.x;
       this.y += this.velocity.y;

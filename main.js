@@ -31,11 +31,13 @@ let variables = {
   
 };
 
+let calculateDistance = (x1, y1, x2, y2) => Math.sqrt( Math.pow((x1-x2), 2) + Math.pow((y1-y2), 2) );
+
 
 let initializeText = () => {
   if(canvas.width < 500) {
     let userTextSplit = variables.text.split(" ");
-    ctx.font = `lighter ${canvas.width / 4}px Verdana`;
+    ctx.font = `lighter ${canvas.width / 5}px Verdana`;
     for(let i = 0; i < userTextSplit.length; i++) {
       ctx.fillStyle = "#fff";
       ctx.textAlign = "center";
@@ -71,16 +73,29 @@ input.addEventListener("keyup", () => {
   getTextInformation();
 })
 
+window.addEventListener('load', function() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  let userName = window.prompt("What is your first name?");
+  console.log(userName);
+  if(!userName) {
+    userName = "Stranger.";
+  }
+  variables.text = `Hi, ${userName}`;
+  initializeText();
+  getTextInformation();
+})
 
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   // depending on the device width
   // choose the number of pixels to be jumped.
   // 10 has more pixel than 20.
-  for(let i = 0; i < bubbles.length; i+= canvas.width < 500? 10 : 20) {
-    bubbles[i].updateVelocity();
-    bubbles[i].float();
-    bubbles[i].show();
+  for(let i = 0; i < bubbles.length; i+= canvas.width < 500? 5 : 20) {
+      bubbles[i].updateVelocity();
+      bubbles[i].float();
+      bubbles[i].show();
+    
+
   }
   requestAnimationFrame(animate);
 }
