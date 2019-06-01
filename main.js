@@ -71,24 +71,22 @@ input.addEventListener("keyup", () => {
   getTextInformation();
 })
 
-window.addEventListener('load', function() {
+window.addEventListener('load', () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   variables.text = `Hi, There!`;
   initializeText();
   getTextInformation();
 })
 
-function animate() {
+let animate = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   // depending on the device width
   // choose the number of pixels to be jumped.
   // 10 has more pixel than 20.
-  for(let i = 0; i < bubbles.length; i+= canvas.width < 500? 5 : 20) {
+  for(let i = 0; i < bubbles.length; i+= canvas.width < 500? 10 : 20) {
       bubbles[i].updateVelocity();
       bubbles[i].float();
       bubbles[i].show();
-    
-
   }
   requestAnimationFrame(animate);
 }
