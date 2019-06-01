@@ -11,13 +11,14 @@ class Bubbles {
       };
       this.delX = 0;
       this.delY = 0;
+        
+      this.velocity = {
+          x: (Math.random() < 0.5 ? -.5 : .5),
+          y: (Math.random() < 0.5 ? -.5 : .5),
+      }
     }
   
-    velocity = {
-      x: (Math.random() < 0.5 ? -.5 : .5),
-      y: (Math.random() < 0.5 ? -.5 : .5),
-  
-    }
+
 
     updateVelocity() {
       this.delX = this.destination.x - this.x;
