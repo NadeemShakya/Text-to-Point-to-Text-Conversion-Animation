@@ -56,8 +56,9 @@ let getTextInformation = () => {
     let alphaIndex = i * 4 + 3;
     if(pxl[i * 4 + 3] > 0) {
         // get the x and y position of drawn pixel.
-        let x = (Math.floor(alphaIndex / 4)) % canvas.width;
-        let y = Math.floor(Math.floor(alphaIndex / canvas.width) / 4);
+        let linearPosition = alphaIndex / 4;
+        let x = linearPosition - (Math.floor(linearPosition / canvas.width) * canvas.width);
+        let y = Math.floor(linearPosition / canvas.width);
         let tempParticle = new Bubbles(x, y);
         bubbles.push(tempParticle);
     }
